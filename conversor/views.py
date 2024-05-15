@@ -24,6 +24,9 @@ def convertir_moneda_post(request):
         # Calcular el monto en USD
         monto_usd = monto_clp / tipo_cambio_clp_usd
         
+        # Almacenar el resultado en la sesión
+        request.session['resultado'] = monto_usd
+        
         # Retornar el resultado como JSON
         return JsonResponse({"resultado": monto_usd})
     else:
